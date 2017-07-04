@@ -63,10 +63,10 @@ def send_interruptor(request):
     return web.Response(body=htmlump)
 
 
-handler = Handler(int(argv[1]))
-app = web.Application()
-app.router.add_route('GET', '/vote', handler.handle_vote)
-app.router.add_route('GET', '/interruptor', send_interruptor)
-app.router.add_route('GET', '/interruptor_ws', handler.handle_interrupt)
-
-web.run_app(app)
+if __name__ == '__main__':
+    handler = Handler(int(argv[1]))
+    app = web.Application()
+    app.router.add_route('GET', '/vote', handler.handle_vote)
+    app.router.add_route('GET', '/interruptor', send_interruptor)
+    app.router.add_route('GET', '/interruptor_ws', handler.handle_interrupt)
+    web.run_app(app)
